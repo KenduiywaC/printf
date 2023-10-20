@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 /**
  * _printf - is a function that selects the correct function to print.
  * @format: identifier to look for.
@@ -7,8 +7,7 @@
 int _printf(const char * const format, ...)
 {
 convert_match m[] = {
-{"%s", print_string}, {"%c", print_char},
-{"%%", print_%},
+{"%s", print_string}, {"%c", print_char}, {"%%", print_37},
 {"%i", printf_int}, {"%d", printf_dec}, {"%r", printf_srev},
 {"%R", printf_rot13}, {"%b", printf_bin}, {"%u", printf_unsigned},
 {"%o", printf_oct}, {"%x", printf_hex}, {"%X", printf_HEX},
