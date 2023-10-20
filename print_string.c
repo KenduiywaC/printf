@@ -2,30 +2,51 @@
 
 /**
 *print_string - print a string.
-*@val: argument.
+*@types: list all the arguments.
 *Return: the length of the string.
 */
 
-int print_string(va_list val)
+int print_string(va_list types, char buffer[],
+int flags, int width, int precision, int size)
 {
-	char *str;
-	int i;
-	int length;
+int length = 0, i;
+char *str = va_arg(types, char *);
 
-	str = va_arg(val, char *);
-	if (str == NULL)
-	{
-		str = "(null)";
-		length = _strlen(str);
-		for (i = 0; i < length; i++)
-			_putchar(str[i]);
-		return (length);
-	}
-	else
-	{
-		length = _strlen(str);
-                for (i = 0; i < length; i++)
-                        _putchar(str[i]);
-                return (length);
-	}
+UNUSED(buffer);
+UNUSED(flags);
+UNUSED(width);
+UNUSED(precision);
+UNUSED(size);
+if (str == NULL)
+{
+str = "(null)";
+if (precision >= 6)
+str = "      ";
+}
+
+while (str[length] != '\0')
+length++;
+
+if (precision >= 0 && precision < length)
+length = precision;
+
+if (width > length)
+{
+if (flags & F_MINUS)
+{
+write(1, &str[0], length);
+for (i = width - length; i > 0; i--)
+write(1, " ", 1);
+return (width);
+}
+else
+{
+for (i = width - length; i > 0; i--)
+write(1, " ", 1);
+write(1, &str[0], length);
+return (width);
+}
+}
+
+return (write(1, str, length));
 }
