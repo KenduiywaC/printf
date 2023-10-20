@@ -1,5 +1,6 @@
 #include "main.h"
 /**
+ *printf_reversed - Custom function to print a reversed string.
  * _printf - is a function that selects the correct function to print.
  * @format: identifier to look for.
  * Return: the length of the string.
