@@ -10,7 +10,8 @@ int _printf(const char *format, ...);
 int _putchar(char character);
 int _puts(char *s);
 int print_37(void);
-int printf_char(va_list val);
+int print_char(va_list types, char buffer[],
+int flags, int width, int precision, int size);
 int _strlen(char *str);
 int _strlenc(const char *str);
 int print_int(va_list args);
